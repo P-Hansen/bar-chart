@@ -11,7 +11,7 @@ The element parameter should be a DOM element or jQuery element that the chart w
 //find the largest number in this array
 function largest(numArray) {
   let largestNum = 0;
-  for (let i = 0; i < data.length; i++) {
+  for (let i = 0; i < numArray.length; i++) {
     if (numArray[i] > largestNum) {
       largestNum = numArray[i];
     }
@@ -42,8 +42,19 @@ function drawBarChart(data, options, element) {
   ctx.lineTo(rightMax, chartBottom);
   ctx.stroke();
   ctx.closePath(); 
-
-
+  //bar width
+  let barWidth = (rightMax - leftMax) / (data.length * 2); //half white space
+  ctx.lineWidth = barWidth;
+  //bar take total pixels / largest number to get the units in pixels
+  let units = (chartBottom - chartTop) / largest(data);
+  //drawing bars
+  ctx.beginPath();
+  for (let i = 0; i < data.length; i++) {
+    ctx.moveTo(leftMax + (barWidth * (2 * i)) + barWidth, chartBottom);
+    ctx.lineTo(leftMax + (barWidth * (2 * i)) + barWidth, chartBottom-(data[i]*units));
+    ctx.stroke();
+  }
+  ctx.closePath();
   //ctx.fillStyle = "#FF0000";
   //ctx.fillRect(0, 0, 150, 75);
 
