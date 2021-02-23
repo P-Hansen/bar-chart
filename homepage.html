@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+</head>
+<body>
+	<canvas id="myCanvas" width="0" height="0"
+	style="border:1px solid #c3c3c3;">
+	Your browser does not support the canvas element.
+	</canvas>
+    <a href="http://jquery.com/">jQuery</a>
+	<script src="draw-bar.js"></script>
+    <script src="jquery.js"></script>
+    <script>
+	// $ references jQuery
+     $( document ).ready(function() {
+ 
+		$( "a" ).click(function( event ) {
+	 
+			alert( "Thanks for visiting!" );
+			
+			event.preventDefault();
+	 
+		});
+	});
+ 
+    </script>
+</body>
+</html>
